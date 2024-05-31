@@ -10,102 +10,49 @@ public class App
     public static void main( String[] args )
     {
   
-    // Para crear un array de Persona
-    // Esta primera variante crea un array inmutable, es decir, que no se puede modificar una vez  que se 
-    // ha creado. Si yo ya he creado 4 personas, no podria agregar mas.
+    	// Queremos crear un array que contenga tanto personas como coches en el mismo.
     	
-    Persona[] personas = {
-    	Persona.builder()
-    	.nombre("Ivan")
-    	.primerApellido("Santiago")
-    	.genero(Genero.HOMBRE)
-    	.salario(3000.60)
-    	.build(),
-    	Persona.builder()
-    	.nombre("Maria Jose")
-    	.primerApellido("Rodriguez")
-    	.salario(2500.50).genero(Genero.MUJER)
-    	.build(),
-    	Persona.builder()
-    	.nombre("Tamara")
-    	.primerApellido("Sanchez")
-    	.genero(Genero.MUJER)
-    	.salario(2800.90)
-    	.build(),
-    	Persona.builder()
-    	.nombre("Adrian")
-    	.primerApellido("Santos")
-    	.segundoApellido("Santos")
-    	.genero(Genero.HOMBRE)
-    	.salario(3000.00)
-    	.build()
+    	Object[] personasYCoches = {
     		
-    };
-   
-    
-  /* EJERCICIO 1. Crear una rama nueva , recorrer el array de personas y recuperar el salario promedio de todas las personas.
-   */  
-   
-   double sumatoriaDeLosSalarios = 0.0;
-   int totalDePersonas = personas.length;
-   double salarioPromedio = 0.0;
-   
-   for(Persona persona : personas) {
-	 // sumatoriaDeLosSalarios = sumatoriaDeLosSalarios + persona.getSalario(); 
-	 
-   }
-    
-   salarioPromedio = sumatoriaDeLosSalarios / totalDePersonas;
-   System.out.println("El salario promedio de todas las personas es: " + salarioPromedio);
-   
-   /* EJERCICIO 2. Recorrer el array de personas y calcular el salario promedio por genero.*/
-   
-   double sumatoriaSalariosHombre = 0.0;
-   double sumatoriaSalariosMujer = 0.0;
-   double sumatoriaSalariosOtro = 0.0;
-   
-   int totalGeneroHombre = 0;
-   int totalGeneroMujer = 0;
-   int totalGeneroOtro = 0;
-   
-   double salarioPromedioHombres = 0.0;
-   double salarioPromedioMujeres = 0.0;
-   double salarioPromedioOtros = 0.0;
-   
-   
-   for(Persona p : personas) {
-	   if(p.getGenero().equals(Genero.HOMBRE)) {
-		   sumatoriaSalariosHombre += p.getSalario();
-		   totalGeneroHombre++; 
-	   } else if (p.getGenero().equals(Genero.MUJER)) {
-		   sumatoriaSalariosMujer += p.getSalario();
-		   totalGeneroMujer++;
-	   } else {
-		   sumatoriaSalariosOtro += p.getSalario();
-		   totalGeneroOtro++;
-	   }
-	   
-   }
-   
-   salarioPromedioHombres = sumatoriaSalariosHombre / totalGeneroHombre;
-   salarioPromedioMujeres = sumatoriaSalariosMujer / totalGeneroMujer;
-   salarioPromedioOtros = sumatoriaSalariosOtro / totalGeneroOtro;
-   
-   System.out.println("Salario promedio de los Hombres: " + salarioPromedioHombres);
-   System.out.println("Salario promedio de las Mujeres: " + salarioPromedioMujeres);
-   System.out.println("Salario promedio de Otros Generos: " + salarioPromedioOtros);
-   
-   
-   
-  
-   
-   
-   
-   
-   
-   
-   
-   
-   
+    		Persona.builder()
+    		.nombre("Rosa")
+    		.primerApellido("Castro")
+    		.genero(Genero.MUJER)
+    		.build(),
+    		Persona.builder()
+    		.nombre("Marly")
+    		.genero(Genero.MUJER)
+    		.build(),
+    		Coche.builder()
+    		.marca("Audi")
+    		.modelo("R2")
+    		.build(),
+    		Coche.builder()
+    		.marca("Mercedes")
+    		.modelo("AMG")
+    		.build()
+    		
+    			
+    	};
+    	
+    	// Recorrer el array y operar con los elementos segun el tipo 
+    	
+    	for(Object object : personasYCoches) {
+    		
+    		// Tengo que determinar si el objeto es una instancia de Persona o de Coche
+    		// para lo cual se utiliza el operador instanceof, que comprueba si un objeto
+    		// es una instancia de algun tipo.
+    		
+    	if(object instanceof Persona) {
+    		Persona p = (Persona) object;
+    		System.out.println("Nombre de la persona: " + p.getNombre());
+    	
+    	} else if(object instanceof Coche) {
+    		Coche c = (Coche) object;
+    		System.out.println("La marca del coche es: " + c.getMarca());
+    		System.out.println("El pais del fabricante es: " + Coche.paisDelFabricante);
+    	
+    	}
+    	
     }
-}
+    }
